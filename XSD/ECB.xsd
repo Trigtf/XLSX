@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:subaack="http://www.stats.ecb.europa.eu/ssm/suba/acknowledgement" xmlns:subaetlack="http://www.stats.ecb.europa.eu/ssm/suba/etl" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.stats.ecb.europa.eu/ssm/suba/acknowledgement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SubaAcknowledgement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReferredSenderId" type="xs:string" />
+        <xs:element minOccurs="0" name="ReferredIREF" type="xs:unsignedShort" />
+        <xs:element minOccurs="0" name="ReferredDateTimeReceived" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FileName" type="xs:string" />
+        <xs:element minOccurs="0" name="ReportContext">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ReportedEntity">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="EntityId">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="scheme" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="EntityName" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Module" type="xs:string" />
+              <xs:element minOccurs="0" name="ReferenceDate" type="xs:date" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="AcceptanceStatus" type="xs:string" />
+        <xs:element minOccurs="0" name="ValidationStatus" type="xs:string" />
+        <xs:element minOccurs="0" name="NCAreaction" type="xs:string" />
+        <xs:element minOccurs="0" name="Version" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="Revision" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="Statistics">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NumberOfValidItems" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="NumberOfInformationItems" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumberOfWarnings" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumberOfNonRestrictiveErrors" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumberOfErrors" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumberOfFatalErrors" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="FilingIndicatorsFound" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumberOfContextFound" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumberOfFactsFound" type="xs:unsignedShort" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="ErrorsFound">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Error">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="ErrorCode" type="xs:string" />
+                    <xs:element minOccurs="0" name="IsFatalError" type="xs:boolean" />
+                    <xs:element minOccurs="0" name="ErrorStatus" type="xs:string" />
+                    <xs:element minOccurs="0" name="ErrorSeverity" type="xs:string" />
+                    <xs:element minOccurs="0" name="ECBNote" type="xs:string" />
+                    <xs:element minOccurs="0" name="ShortDescription" type="xs:string" />
+                    <xs:element minOccurs="0" name="LongDescription" type="xs:string" />
+                    <xs:element minOccurs="0" name="VRType" type="xs:string" />
+                    <xs:element minOccurs="0" name="Owner" type="xs:string" />
+                    <xs:element minOccurs="0" name="FormulaExpression" type="xs:string" />
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="Observation">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="tsrc_descr" type="xs:string" />
+                          <xs:element minOccurs="0" name="dp_descr" type="xs:string" />
+                          <xs:element minOccurs="0" name="variable" type="xs:string" />
+                          <xs:element minOccurs="0" name="value">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:unsignedInt">
+                                  <xs:attribute name="unit" type="xs:string" use="optional" />
+                                  <xs:attribute name="decimals" type="xs:byte" use="optional" />
+                                  <xs:attribute name="type" type="xs:string" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
